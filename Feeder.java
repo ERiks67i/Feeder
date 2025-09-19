@@ -29,7 +29,7 @@ public class Feeder
             eaten *= numBirds;
             currentFood -= eaten;
         }
-
+        if (currentFood < 0) currentFood = 0;
     }
 
     /**
@@ -42,8 +42,12 @@ public class Feeder
         int days = 0;
         while (numDays > 0)
         {
+            if (currentFood == 0) return days;
             simulateOneDay(numBirds);
+            numDays--;
+            days++;
+
         }
-        return 0;
+        return days;
     }
 }
